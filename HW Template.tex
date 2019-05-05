@@ -30,12 +30,15 @@
 \newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
 \renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
 \newcommand\analysis{\vspace{.10in}\textbf{Analysis: }\newline}
+\newcommand\outline{\vspace{.10in}\textbf{Proof Outline: }\newline}
 \newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
 \newcommand\correctness{\vspace{.10in}\textbf{Correctness: }\newline}
 \newcommand\runtime{\vspace{.10in}\textbf{Running time: }\newline}
+\newcommand\definitions{\emph{Definitions:}\newline}
+\newcommand\claim{\emph{Claim.}\newline}
 \pagestyle{fancyplain}
 \lhead{\textbf{\NAME}}
-\chead{\textbf{CS 280D HW\HWNUM}}
+\chead{\textbf{CS 289A Midterm Problem Set}}
 \rhead{\today}
 \begin{document}\raggedright
 %Section A==============Change the values below to match your information==================
@@ -47,21 +50,66 @@
 % but replacing "The First Problem" with a short phrase will help you remember
 % which problem this is when you read over your homeworks to study.
 
-\question{1}{Description of Question} 
+\question{1}{Deterministic Communication Complexity of Graph Isomorphism} 
 
-\analysis
-Analysis of problem
+The problem of Graph Isomorphism naturally seems very similar to the Equality function: a function we are very familiar with. Moreover, due to the inherent difficulty in accurately deciphering the pattern in the characteristic matrix for Graph Isomorphism, the approach taken was to reduce Equality of $n^2$ bits to the the problem of Isomorphism of Simple Undirected Graphs on n vertices. \newline
 
-\algorithm
-\begin{algorithmic}
-\State This is a statement \algorithmiccomment{Comment} 
-\end{algorithmic}
+\definitions
+Let $\mathbf{G_n}$ = the set of simple undirected graphs on n vertics \newline
+Let $IS_n: \mathbf{G_n} \times \mathbf{G_n} \to \{0, 1\}$ be the graph isomorphism function i.e. 1 if the Graph x is an isomorphism of Graph y and 0 otherwise
+\newline
 
-\runtime
-Run time complexity of solution
+\claim
+$ D(IS_n) \geq n^2 $
 
-\correctness
-Correctness of solution
+\proof 
+Reduction from equality of $n^2$ bit strings to isomorphism of simple undirected graphs on n vertices. (Note in the reduction can only use local work i.e. local work is free as Alice and Bob are computationally unbounded entities) \newline
+Show that the number of unique simple undirected graphs under isomorphism on n vertices are $\theta2^{(n^2)}$ and therefore each can be represented using $\theta(n^2)$ bits. Therefore the $n^2$ bits of equality can be interpreted as graphs $\in \mathbf{G_n}$ and isomorphism $\leftrightarrow$ equality.
+\newpage
+
+\question{2}{Deterministic Communication Complexity of Determining nth least significant bit of the product of two natural numbers} 
+
+Product of n bits strings (do not need to consider entire number)
+
+\definitions
+Let $Product_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ be the the function on n bits strings indicating the nth least significant bit of the product of the integers represented by the strings
+
+\claim
+$D(Product_n) \geq n$ (maybe plus 1 look at the inequality)
+
+\proof 
+show submatrix embedding
+
+proof by induction for log(rank) > n - 1
+
+show for n = 2 
+
+assume for k
+
+2($2^{k-1}$) - c where c $\leq$ $2^{k-2}$
+
+Therefore ceiling log ($2^k$ - $2^{k-2}$) = k
+
+hence for pk+1 > k therefore pk+1 $\geq$ k+1 (because no fractional bits)
+
+thus can conclude that log of rank $\geq$ k hence ...
+
+\newpage
+
+\question{3}{Deterministic Communication Complexity of Computing a Boolean formula on n variables} 
+
+some info
+
+\definitions
+Let $Boolean_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
+
+\claim
+$D(boolean_n) = \omega(n)$ 
+
+\proof 
+
+no idea as of now 
+
 \newpage
 
 \end{document}
