@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1557073567 "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.tex" "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.pdf" "HW Template" 1557073569
-  "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.aux" 1557073568 8 a94a2480d3289e625eea47cd1b285758 ""
-  "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.tex" 1557073567 4969 8af1fa625cf0dc1672ee598f6c8eabae ""
+["pdflatex"] 1557184156 "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.tex" "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.pdf" "HW Template" 1557184157
+  "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.aux" 1557184157 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.tex" 1557184155 4687 20ed7be0168d13fd08f3e77a69a78def ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1480098698 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -31,7 +31,6 @@
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1480098733 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1480098733 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1480098733 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1480098733 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1480098733 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1480098806 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1480098815 1458 43ab4710dc82f3edeabecd0d099626b2 ""
@@ -78,11 +77,11 @@
   "/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1523934492 2717033 f61a5287d9c22a39a74f1979fe3f905c ""
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1523934516 4220280 10cab8fbd7c5a7c52aba9917e190d018 ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "HW Template.aux" 1557073568 8 a94a2480d3289e625eea47cd1b285758 ""
-  "HW Template.tex" 1557073567 4969 8af1fa625cf0dc1672ee598f6c8eabae ""
+  "HW Template.aux" 1557184157 8 a94a2480d3289e625eea47cd1b285758 ""
+  "HW Template.tex" 1557184155 4687 20ed7be0168d13fd08f3e77a69a78def ""
   (generated)
-  "HW Template.aux"
-  "HW Template.pdf"
-  "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.log"
-  "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.pdf"
   "HW Template.log"
+  "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.log"
+  "HW Template.aux"
+  "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.pdf"
+  "HW Template.pdf"

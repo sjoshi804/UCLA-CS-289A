@@ -1,4 +1,12 @@
+ #!/usr/bin/env sage -python
+""" from numpy import linalg
+from numpy import array_equal
+from numpy import ix_
+from numpy import diag """
+from numpy import matrix
 from sage.all import *
+# matrices = []
+# for num_of_bits in range(4, 6):
 while True:
     num_of_bits = int(raw_input("How many bits?\n"))
     m_f = []
@@ -12,10 +20,8 @@ while True:
             else:
                 l1.append(int(binary[num_of_bits - 1]))
         m_f.append(l1)
-    field_num = 2**(num_of_bits - 1)
-    print(2*field_num)
+
+    print(2**num_of_bits)
     print(matrix(m_f))
-    m = matrix(GF(field_num), m_f)
-    t = matrix(GF(2), m_f)
-    print(t.rank())
-    print (m.rank())
+    print((matrix(GF(2**(num_of_bits - 1), m_f)).rank())
+    
