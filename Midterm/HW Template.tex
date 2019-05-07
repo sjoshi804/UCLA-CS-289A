@@ -77,10 +77,20 @@ Let $Product_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ be the the functi
 \claim
 $D(Product_n) \geq n$ (maybe plus 1 look at the inequality)
 
-\proof 
-submatrix embedding 
+\proof
+\emph{The kernel has always dimension < 2 to the (n - 1) vectors therefore by rank nullity}
 
-other pattern
+proof for the above statement:
+
+first show that the due to multiplication by 1, 2, 4 ... powers of 2 basis vectors must select from columns with sum = 0
+
+then show that atleast 4 non zero elements are needed in a basis vector for the kernel are needed and that anymore than 4 can be reduced to exactly 4
+
+Show that a + d = b + c = 2^n and that a, d correspond to 1 and b, c correspond to -1
+
+
+
+\emph{rank > 2^(n - 1) $\implies$ log rank > n - 1 $\implies$ ceiling log rank $\geq$ n and hence D(f) $\geq$ 1}
 
 \newpage
 

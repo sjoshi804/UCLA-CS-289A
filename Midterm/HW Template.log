@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  6 MAY 2019 16:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 MAY 2019 15:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/sjoshi/Documents/Classes/CS 289A/HW Template.tex"
-(/Users/sjoshi/Documents/Classes/CS 289A/HW Template.tex
+**"/Users/sjoshi/Documents/Classes/289A/HW Template.tex"
+(/Users/sjoshi/Documents/Classes/289A/HW Template.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
@@ -197,7 +197,7 @@ Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footers
 \f@nch@O@erf=\skip62
 \f@nch@O@olf=\skip63
 \f@nch@O@orf=\skip64
-) (/Users/sjoshi/Documents/Classes/CS 289A/HW Template.aux)
+) (/Users/sjoshi/Documents/Classes/289A/HW Template.aux)
 \openout1 = `"HW Template.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
@@ -306,17 +306,69 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 55.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3] (/Users/sjoshi/Documents/Classes/CS 289A/HW Template.aux) ) 
+]
+/Users/sjoshi/Documents/Classes/289A/HW Template.tex:89: Missing $ inserted.
+<inserted text> 
+                $
+l.89 Show that a + d = b + c = 2^
+                                 n and that a, d correspond to 1 and b, c co...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/sjoshi/Documents/Classes/289A/HW Template.tex:90: Missing $ inserted.
+<inserted text> 
+                $
+l.90 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/sjoshi/Documents/Classes/289A/HW Template.tex:90: Missing } inserted.
+<inserted text> 
+                }
+l.90 
+     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/sjoshi/Documents/Classes/289A/HW Template.tex:90: Too many }'s.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.90 
+     
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+/Users/sjoshi/Documents/Classes/289A/HW Template.tex:93: Missing $ inserted.
+<inserted text> 
+                $
+l.93 ...log rank $\geq$ n and hence D(f) $\geq$ 1}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/sjoshi/Documents/Classes/289A/HW Template.tex:93: Missing $ inserted.
+<inserted text> 
+                $
+l.93 ...log rank $\geq$ n and hence D(f) $\geq$ 1}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+[2] [3] (/Users/sjoshi/Documents/Classes/289A/HW Template.aux) ) 
 Here is how much of TeX's memory you used:
  4068 strings out of 492649
- 57816 string characters out of 6129622
+ 57787 string characters out of 6129622
  132752 words of memory out of 5000000
  7886 multiletter control sequences out of 15000+600000
  9563 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,43p,529b,208s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,43p,526b,208s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "/Users/sjoshi/Documents/Classes/CS 289A/HW Template.pdf" (3 pages, 100021 bytes).
+Output written on "/Users/sjoshi/Documents/Classes/289A/HW Template.pdf" (3 pages, 105655 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  35 compressed objects within 1 object stream

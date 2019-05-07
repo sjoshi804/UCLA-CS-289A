@@ -1,9 +1,9 @@
-PWD /Users/sjoshi/Documents/Classes/CS 289A
+PWD /Users/sjoshi/Documents/Classes/289A
 INPUT /usr/local/texlive/2018/texmf.cnf
 INPUT /usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/sjoshi/Documents/Classes/CS 289A/HW Template.tex
-OUTPUT /Users/sjoshi/Documents/Classes/CS 289A/HW Template.log
+INPUT /Users/sjoshi/Documents/Classes/289A/HW Template.tex
+OUTPUT /Users/sjoshi/Documents/Classes/289A/HW Template.log
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/size11.clo
@@ -60,9 +60,9 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/mathtools/mhsetup.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/mathtools/mhsetup.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-INPUT /Users/sjoshi/Documents/Classes/CS 289A/HW Template.aux
-INPUT /Users/sjoshi/Documents/Classes/CS 289A/HW Template.aux
-OUTPUT /Users/sjoshi/Documents/Classes/CS 289A/HW Template.aux
+INPUT /Users/sjoshi/Documents/Classes/289A/HW Template.aux
+INPUT /Users/sjoshi/Documents/Classes/289A/HW Template.aux
+OUTPUT /Users/sjoshi/Documents/Classes/289A/HW Template.aux
 INPUT /usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -112,9 +112,9 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
-OUTPUT /Users/sjoshi/Documents/Classes/CS 289A/HW Template.pdf
+OUTPUT /Users/sjoshi/Documents/Classes/289A/HW Template.pdf
 INPUT /usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT /Users/sjoshi/Documents/Classes/CS 289A/HW Template.aux
+INPUT /Users/sjoshi/Documents/Classes/289A/HW Template.aux
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
