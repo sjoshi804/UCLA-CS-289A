@@ -86,14 +86,15 @@ first show that the due to multiplication by 1, 2, 4 ... powers of 2 basis vecto
 
 then show that atleast 4 non zero elements are needed in a basis vector for the kernel are needed and that anymore than 4 can be reduced to exactly 4
 
+Show that a + d = b + c = $2^n$ and that a, d correspond to 1 and b, c correspond to -1 (these conditions are necessary to fulfill sum of bits = 0 with 4 elements)
 
-Show that a + d = b + c = $2^n$ and that a, d correspond to 1 and b, c correspond to -1
+Show that there can exist $< 2 ^ {n - 1}$ such vectors and hence nullity $< 2 ^ {n - 1}$
 
+Use rank nullity and hence rank $> 2 ^ {n - 1}$
 
+Thus conclude:
 
 \emph{rank $>  2^{n - 1} \implies$ log rank $>$ n - 1 $\implies$ ceiling log rank $\geq$ n and hence D(f) $\geq$ 1}
-
-
 
 \newpage
 
@@ -108,8 +109,9 @@ Let $Boolean_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
 $D(boolean_n) = \omega(n)$ 
 
 \proof 
+Prove dependence on every term (reduce to expression on just 1 bit given n - 1 bits)
 
-no idea as of now 
+Prove impossible to know term without actually doing xor for each bit  (by reductions of functions)
 
 \newpage
 
