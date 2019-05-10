@@ -22,8 +22,7 @@ while True:
     print(matrix_f.rank())
     matrix_f = (matrix(m_f))
     print(matrix_f.rank())
-    print("-------------------------------------------------------------------------------------------------")
-"""     kernel_f = (kernel(matrix_f)).matrix()
+    kernel_f = (kernel(matrix_f)).matrix()
     print(kernel_f)
     hypothesis = True
     row_num = 0
@@ -43,5 +42,5 @@ while True:
             break
         print(str(row_num) + ": " + str(digits) + " " + str(abs_sum))
         row_num += 1
-    print(hypothesis) """
+    print(hypothesis) 
    

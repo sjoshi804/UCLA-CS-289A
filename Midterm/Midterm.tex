@@ -88,6 +88,9 @@ Product of n bits strings (do not need to consider entire number)
 Let $Product_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ be the the function on n bits strings indicating the nth least significant bit of the product of the integers represented by the strings
 
 \claim
+logn bound using powers of 2 being distinct s
+
+\claim
 $D(Product_n) \geq n + 1$ (maybe plus 1 look at the inequality)
 
 \emph{The kernel has always dimension $< 2^{n - 1}$ vectors therefore by rank nullity}
@@ -124,13 +127,14 @@ Let $Boolean_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
 $D(Boolean_n) = n + 1$ 
 
 \proof 
-Corollary that follows immediately from fooling set technique:
+For each bit there are two strings that differ in value of just that bit and have different outputs thus must be separated by any protocol
 
-Max fooling set of size $< 2^{n - k} \implies$ every $2^{k + 1}$ rows that differ from one another in at most k + 1 bits are identical 
+Thus there exist n such distinct partitioning cuts (note that the partitions must necessarily be distinct as they are not this implies that the 2 strings corresponding to bit i differ in bit j as well - contradiction)
 
-Proof by contradiction that the deterministic communication complexity of computing a given boolean formula 
+Any valid protocol must induce these n partitions (as for any given bit, it is impossible for Alice or Bob to know precisely which side of the partition the final answer lies in with just their input for all possible input strings)
 
-Assume there exists a protocol P that 
+To induce these n distinct partitions any protocol must send atleast n bits and hence the deterministic commmunication complexity of any such boolean formula is exactly n + 1 bits. 
+
 \newpage
 
 \question{4}{Jazzy Inner Product}
@@ -250,10 +254,9 @@ $B_{P} \geq log(n/c)$
 
 \proof 
 \newpage
-\newAppendix{Appendix:}{Python Script used for Testing}
+\newAppendix{Appendix:}{Python Script used for Empirical Data for Rank in Various Fields}
 \begin{lstlisting}
 from sage.all import *
-while True:
     num_of_bits = int(raw_input("How many bits?\n"))
     m_f = []
     for x in range(0, 2**num_of_bits):
@@ -271,12 +274,33 @@ while True:
     matrix_f = (matrix(GF(2), m_f))
     print(matrix_f.rank())
     matrix_f = (matrix(GF(2**num_of_bits), m_f))
-    print(matrix_f.rank())
+    print(matrix_f.rank()) 
     matrix_f = (matrix(GF(2**(num_of_bits+1)), m_f))
     print(matrix_f.rank())
     matrix_f = (matrix(m_f))
     print(matrix_f.rank())
-    print
+    kernel_f = (kernel(matrix_f)).matrix()
+    print(kernel_f)
+    hypothesis = True
+    row_num = 0
+    for row in kernel_f:
+        pos = 0
+        sum = 0
+        abs_sum = 0
+        digits = 0
+        for element in row:
+            sum += ((pos*element))
+            abs_sum += abs((pos * element))
+            pos += 1
+            if element != 0:
+                digits += 1
+        if sum != 0:
+            hypothesis = False
+            break
+        print(str(row_num) + ":" + str(digits) + " " + str(abs_sum))
+        row_num += 1
+    print(hypothesis) 
+       
 \end{lstlisting}
 \end{document}
 
