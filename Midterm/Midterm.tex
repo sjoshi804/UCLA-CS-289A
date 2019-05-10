@@ -24,16 +24,19 @@
 \usepackage{mathtools}
 \usepackage{fancyhdr}
 \usepackage{algorithmicx}
+\usepackage{listings}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt plus 1pt}
 \setlength{\headheight}{13.6pt}
 \newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\newcommand\newAppendix[2]{\vspace{.25in}\hrule\textbf{#1 #2}\vspace{.5em}\hrule\vspace{.10in}}
 \renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
-\newcommand\analysis{\vspace{.10in}\textbf{Analysis: }\newline}
+\newcommand\analysis{\vspace{.10in}\emph{Analysis: }\newline}
 \newcommand\outline{\vspace{.10in}\textbf{Proof Outline: }\newline}
-\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
-\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }\newline}
-\newcommand\runtime{\vspace{.10in}\textbf{Running time: }\newline}
+\newcommand\algorithm{\vspace{.10in}\emph{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\emph{Correctness: }\newline}
+\newcommand\runtime{\vspace{.10in}\emph{Running time: }\newline}
+\newcommand\problem{\emph{Problem Statement:}\newline}
 \newcommand\definitions{\emph{Definitions:}\newline}
 \newcommand\claim{\emph{Claim.}\newline}
 \pagestyle{fancyplain}
@@ -50,8 +53,14 @@
 % but replacing "The First Problem" with a short phrase will help you remember
 % which problem this is when you read over your homeworks to study.
 
-\question{1}{Deterministic Communication Complexity of Graph Isomorphism} 
+\question{1}{Isomorphic Graphs} 
 
+\problem
+Alice and Bob each have an undirected graph on n
+vertices. How much communication do they need to find out deterministically if
+their graphs are isomorphic?
+
+\analysis
 The problem of Graph Isomorphism naturally seems very similar to the Equality function: a function we are very familiar with. Moreover, due to the inherent difficulty in accurately deciphering the pattern in the characteristic matrix for Graph Isomorphism, the approach taken was to reduce Equality of $n^2$ bits to the the problem of Isomorphism of Simple Undirected Graphs on n vertices. \newline
 
 \definitions
@@ -67,54 +76,208 @@ Reduction from equality of $n^2$ bit strings to isomorphism of simple undirected
 Show that the number of unique simple undirected graphs under isomorphism on n vertices are $\theta2^{(n^2)}$ and therefore each can be represented using $\theta(n^2)$ bits. Therefore the $n^2$ bits of equality can be interpreted as graphs $\in \mathbf{G_n}$ and isomorphism $\leftrightarrow$ equality.
 \newpage
 
-\question{2}{Deterministic Communication Complexity of Determining nth least significant bit of the product of two natural numbers} 
+\question{2}{Integer Multiplication} 
+\problem
+How much deterministic communication does it take to compute the n
+least significant bit of the product of two natural numbers, of which Alice has one and Bob the other?
 
+\analysis
 Product of n bits strings (do not need to consider entire number)
 
 \definitions
 Let $Product_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ be the the function on n bits strings indicating the nth least significant bit of the product of the integers represented by the strings
 
 \claim
-$D(Product_n) \geq n$ (maybe plus 1 look at the inequality)
+$D(Product_n) \geq n + 1$ (maybe plus 1 look at the inequality)
 
-\proof
-\emph{The kernel has always dimension < $2^{n - 1}$ vectors therefore by rank nullity}
+\emph{The kernel has always dimension $< 2^{n - 1}$ vectors therefore by rank nullity}
 
 proof for the above statement:
 
-first show that the due to multiplication by 1, 2, 4 ... powers of 2 basis vectors must select from columns with sum = 0
+Argue that vectors of the desired form span the nullspace 
 
-then show that atleast 4 non zero elements are needed in a basis vector for the kernel are needed and that anymore than 4 can be reduced to exactly 4
-
-Show that a + d = b + c = $2^n$ and that a, d correspond to 1 and b, c correspond to -1 (these conditions are necessary to fulfill sum of bits = 0 with 4 elements)
-
-Show that there can exist $< 2 ^ {n - 1}$ such vectors and hence nullity $< 2 ^ {n - 1}$
+Show that there can exist only $< 2 ^ {n - 1}$ such linearly independent vectors and hence nullity $< 2 ^ {n - 1}$
 
 Use rank nullity and hence rank $> 2 ^ {n - 1}$
 
-Thus conclude:
+Thus conclude. 
 
 \emph{rank $>  2^{n - 1} \implies$ log rank $>$ n - 1 $\implies$ ceiling log rank $\geq$ n and hence D(f) $\geq$ 1}
 
 \newpage
 
-\question{3}{Deterministic Communication Complexity of Computing a Boolean formula on n variables} 
+\question{3}{Boolean Formulas} 
 
-some info
+\problem
+A Boolean formula in variables z1, . . . , zn is a fully
+parenthesized expression with operands $z1, \lnot z1, . . . , zn, \lnot zn$ and operators $\land$ and $\lor$. Let $\phi (z1, . . . , zn)$ be a Boolean formula in which every variable occurs exactly once. Prove that computing $\phi (x \oplus y$ deterministically on input $x, y \in {0, 1}^n$
+requires
+$\phi(n)$ bits of communication.
+
+\analysis
+Describe the boolean function and the requirements it imposes
 
 \definitions
 Let $Boolean_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
 
 \claim
-$D(boolean_n) = \omega(n)$ 
+$D(Boolean_n) = n + 1$ 
 
 \proof 
-Prove dependence on every term (reduce to expression on just 1 bit given n - 1 bits)
+Corollary that follows immediately from fooling set technique:
 
-Prove impossible to know term without actually doing xor for each bit  (by reductions of functions)
+Max fooling set of size $< 2^{n - k} \implies$ every $2^{k + 1}$ rows that differ from one another in at most k + 1 bits are identical 
+
+Proof by contradiction that the deterministic communication complexity of computing a given boolean formula 
+
+Assume there exists a protocol P that 
+\newpage
+
+\question{4}{Jazzy Inner Product}
+
+\problem
+Define $f: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ by $f(x, y) = 1 \iff \sum{x_i \cdot y_i} = 0 \text{ mod (18181)}.$ What is the nondeterministic communication complexity of f?
+
+\analysis
+compare to known problem 
+
+\definitions
+Let $JIP_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
+
+\claim
+$N(JIP_n) = \Omega(n)$ 
+
+\proof 
+Maximal rectangles -> cross of the boolean vectors in subspace A of dimension n - k and subspace B of dimension k 
+
+Number of boolean vectors in A = $2^{n - k}$ and number of boolean vectors in B = $2^{k}$ therefore total number of elements in any rectangle $\leq 2^{n - k} \cdot 2^{k} = 2^n$ 
+
+Identical proof here on forth
 
 \newpage
 
+\question{5}{Relative Primality}
+
+\problem
+Alice and Bob’s inputs are integers a and b, respectively, where $a, b \in [1, 2^n]$. Prove that $\Theta(n/ log n)$ bits are necessary and sufficient to verify nondeterministically that a and b are relatively prime.
+
+\analysis
+... 
+
+\definitions
+Let $RP_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
+
+\claim
+$N(RP_n) = \Omega(n/log(n))$ 
+
+\proof 
+Use prime number theorem
+
+Not really sure how to progress from there, going to write program to see matrices, but need to come up with protocol in order to prove upper bound
+
+\newpage
+
+\question{6}{Orthogonal Subspaces}
+
+\problem
+On input linear subspaces $A, B \subseteq F^n_2$, prove that $\Theta(n^2)$ bits of nondeterministic communication are necessary and sufficient to check if A and B are orthogonal.
+
+\analysis
+$N^2$ bits for the representation of the Subspace
+
+\definitions
+Let $OS_n: {\{0, 1\}}^{n^2} \times {\{0, 1\}}^{n^2} \to \{0, 1\}$
+
+\claim
+$N(OS_n) = \Omega(n^2)$ 
+
+\proof 
+Large fooling set
+
+The fooling set contains all vector spaces and their orthogonal complement. 
+
+By definition of orthogonal complement, it is the subspace containing all vectors orthogonal to a susbspace and hence any other all crosspoints will equal 0 (thus a valid fooling set)
+
+Number of subspaces of ${\mathbb{F}_2}^n = 1 + {2^n \choose n - 1} + ... + {2^n \choose 1} + 1$
+
+Largest term is by far second term as terms reduce in magnitude now as they $n << 2^{n-1}$
+
+Therefore fooling set = $\Omega{2^n \choose n - 1} = \Omega({2^{n^2}})$
+
+Therefore $N(OS_n) = \Omega(log(2^{n^2})) = \Omega(n^2)$
+
+And by the trivial protocol of sending the entire input it is easy to see that this bound is tight
+\newpage
+
+\question{7}{Communication v/s Randomness}
+
+\problem
+Prove that any randomized protocol for EQn with probability of correctness 2/3 and communication cost c must use more than $log_2(n/c)$ bits of randomness.
+
+\analysis
+say something
+
+\definitions
+Let $EQ_n: {\{0, 1\}}^{n^2} \times {\{0, 1\}}^{n^2} \to \{0, 1\}$
+
+Let P be a particular randomized protocol for $EQ_n$ with cost c with probability of correctness = 2/3
+
+Let $B_P$ = number of random bits used by protocol P 
+
+\claim
+$B_{P} \geq log(n/c)$
+
+\proof 
+
+\newpage
+\question{8}{Better Than Random}
+
+\problem
+Prove that every $f : {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ has a randomized protocol with constant cost and error at most $1/2 - \Theta(2^{-n/2})$
+
+\analysis
+Thoughts
+
+\definitions
+Let $EQ_n: {\{0, 1\}}^{n^2} \times {\{0, 1\}}^{n^2} \to \{0, 1\}$
+
+Let P be a particular randomized protocol for $EQ_n$ with cost c with probability of correctness = 2/3
+
+Let $B_P$ = number of random bits used by protocol P 
+
+\claim
+$B_{P} \geq log(n/c)$
+
+\proof 
+\newpage
+\newAppendix{Appendix:}{Python Script used for Testing}
+\begin{lstlisting}
+from sage.all import *
+while True:
+    num_of_bits = int(raw_input("How many bits?\n"))
+    m_f = []
+    for x in range(0, 2**num_of_bits):
+        l1 = []
+        for y in range(0, 2**num_of_bits):
+            z = x * y
+            binary = ("{0:b}".format(z))[::-1]
+            if (len(binary) < num_of_bits):
+                l1.append(0)
+            else:
+                l1.append(int(binary[num_of_bits - 1]))
+        m_f.append(l1)
+    field_num = 2**(num_of_bits - 1)
+    print(2*field_num)
+    matrix_f = (matrix(GF(2), m_f))
+    print(matrix_f.rank())
+    matrix_f = (matrix(GF(2**num_of_bits), m_f))
+    print(matrix_f.rank())
+    matrix_f = (matrix(GF(2**(num_of_bits+1)), m_f))
+    print(matrix_f.rank())
+    matrix_f = (matrix(m_f))
+    print(matrix_f.rank())
+    print
+\end{lstlisting}
 \end{document}
 
 
