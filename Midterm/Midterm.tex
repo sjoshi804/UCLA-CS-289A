@@ -232,7 +232,7 @@ The lower bound can be shown by reduction from the disjointness function on $n/l
 
 In particular, $DISJ_{(n/logn)}: {\{0, 1\}}^{(n/logn)} \times {\{0, 1\}}^{(n/logn)} \to \{0, 1\}$ where $DISJ_{(n/logn)} = 1 \iff$ the two strings do not have a 1 in the same position, otherwise $DISJ_{(n/logn)} = 0$
 
-$DISJ_{(n/logn)}$ can be reduced to $RP_n$ (as evidenced by the above protocl) and hence if there exists a non-deterministic protocol with cost less than $n/log(n)$ bits for $RP_n$ then there must exist a protocol with cost less than $n/log(n)$ bits for $DISJ_{(n/logn)}$. But this is a contradiction as we have proven in class that $N(DISJ_{(n/logn)}) = n/logn$.
+$DISJ_{(n/logn)}$ can be reduced to $RP_n$ (as evidenced by the above protocol) and hence if there exists a non-deterministic protocol with cost less than $n/log(n)$ bits for $RP_n$ then there must exist a protocol with cost less than $n/log(n)$ bits for $DISJ_{(n/logn)}$. But this is a contradiction as we have proven in class that $N(DISJ_{(n/logn)}) = n/logn$.
 
 Thus $N(RP_n) = \Omega(n/log(n))$
 
@@ -291,7 +291,7 @@ Let $B_P$ = number of random bits used by protocol P
 $B_{P} \geq log(n/c)$
 
 \analysis
-I was not able to come up with any reasonable proof for the claim, however my approach was to attempt to show that any protocol that does better than this would imply the existence of a \emph{randomized (or so to say)} protocol with error = 0 with constant randomized cost by using the technique to minimize randomness alongside that for error minimization (as discussed in class). 
+I was not able to come up with any reasonable proof for the claim, however my approach was to attempt to show that any protocol P uses less randomness than the aformentioned bound would imply the existence of a \emph{randomized (or so to say)} protocol with error = 0 with constant randomized cost by using the technique to minimize randomness alongside that for error minimization on said protocol P (as discussed in class). 
 
 \newpage
 \question{8}{Better Than Random}
