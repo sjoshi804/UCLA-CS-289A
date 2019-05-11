@@ -61,7 +61,7 @@ vertices. How much communication do they need to find out deterministically if
 their graphs are isomorphic?
 
 \analysis
-The problem of Graph Isomorphism by virtue of being an equivalence relation very similar to that of equality. In particular, it is easy to construct a fooling set of size equal to the number of equivalence classes. Hence it remains to show that there exist  \newline
+The problem of Graph Isomorphism by virtue of being an equivalence relation is very similar to that of equality. In particular, it is easy to construct a fooling set of size equal to the number of equivalence classes. Hence it remains to show that there exist many equivalence classes for the existence of a large fooling set. \newline
 
 \definitions
 Let $\mathbf{G_n}$ = the set of unique (up to isomorphisms) simple undirected graphs on n vertics \newline
@@ -88,11 +88,11 @@ This lower bound is tight as there is a protocol with this cost. In particular, 
 
 \question{2}{Integer Multiplication} 
 \problem
-How much deterministic communication does it take to compute the n
+How much deterministic communication does it take to compute the $\text{n}^{\text{th}}$
 least significant bit of the product of two natural numbers, of which Alice has one and Bob the other?
 
 \analysis
-The first simplification that can be done on this problem is reducing the problem from multiplication of any two natural numbers to the mutliplication of the integers represented by 2 n-bit strings (that are in particular the least significant n-bits of the original natural number's representation) as any bit more significant cannot affect the output of this function. 
+The first simplification that can be done on this problem is reducing the problem from multiplication of any two natural numbers to the mutliplication of the integers represented by 2 n-bit strings (that are in particular the least significant n-bits of the original natural numbers' representation) as any bit more significant cannot affect the output of this function. 
 
 \definitions
 Let $Product_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ be the the function on n bits strings indicating the nth least significant bit of the product of the integers represented by the strings
@@ -106,7 +106,7 @@ This proof uses the rank bound technique and shows that the characteristic matri
 Assuming rows and columns are arranged in lexicographic order it easy to see that 
 the rows corresponding to powers of $2 \in [0, 2^n]$ are linearly independent. 
 
-An inductive argument proves this by showing that for any $k < 2^n$ the row corresponding to kth power of 2 must be linearly independent of the previous k - 1 rows corresponding to powers of 2 as the first $2^n / 2^{k-1}$ numbers have 0s in their k - 1 most significant bits thus must have 0s the columns corresponding to them in all the previous k - 1 rows but necessarily half of them must have a 1 in the kth most significant bit and thus will have 1s in the row correspoding to $2^k$,thus this row is linearly independent of the previous k - 1 rows (corresponding to powers of 2). A similar argument works for the base case in showing that rows corresponding to $2^0$ and $2^1$ are linearly independent. 
+An inductive argument proves this by showing that for any $k < 2^n$ the row corresponding to kth power of 2 must be linearly independent of the previous k - 1 rows corresponding to powers of 2 as the first $2^{n-k-1}$ numbers have 0s in their k - 1 most significant bits thus must have 0s the columns corresponding to them in all the previous k - 1 rows but necessarily half of them must have a 1 in the kth most significant bit and thus will have 1s in the row correspoding to $2^k$,thus this row is linearly independent of the previous k - 1 rows (corresponding to powers of 2). A similar argument works for the base case in showing that rows corresponding to $2^0$ and $2^1$ are linearly independent. 
 
 Thus $rank(M_{Product_n}) \geq log(2^n) = n$ 
 
@@ -124,7 +124,7 @@ Conjecture: Vectors of the following form completely span the null space:
 
 I was unable to prove this conjecture (perhaps because this is a consequence of a deeper phenomenon), however the intuition behind this relies on the following argument. Moreover, there was overwhelming evidence from empirical data that conformed to this hypothesis (the appendix contains the python script used in order to obtain this empirical data):
 
-The vectors in the nullspace are a subset of the linear combinations of the vectors that represent in essence multiplication by 0. This is to say that the vectors of the form mentioned above are vectors where the 4 indices with non-zero values along with values sum up to 0 i.e. $a + b - c - d = 0$. The choice for 4 values of this form is not arbitrary as it can be argued easily that any other vector of such a form in the nullspace can be expressed as a linear combination of these vectors, an the choice of 4 in particular allows for easy analysis of the possible vectors of this type. Since $a \in [1, 2^{n - 1} - 2]$ the number of vectors of this form are strictly less than $2^{n - 1}$ and thus $dim(kernel(M_{Product_n})) < 2^{n - 1}$
+The vectors in the nullspace are a subset of the linear combinations of the vectors that represent in essence multiplication by 0. This is to say that the vectors of the form mentioned above are vectors where the 4 indices with non-zero values along with values sum up to 0 i.e. $a + b - c - d = 0$. The choice for 4 values of this form is not arbitrary as it can be argued easily that any other vector of such a form (sum to 0) in the nullspace can be expressed as a linear combination of these vectors, an the choice of 4 in particular allows for easy analysis of the possible vectors of this type. Since $a \in [1, 2^{n - 1} - 2]$ the number of vectors of this form are strictly less than $2^{n - 1}$ and thus $dim(kernel(M_{Product_n})) < 2^{n - 1}$
 
 By the rank nullity theorem, this implies $rank(M_{Product_n}) > 2 ^ {n - 1}$
 
@@ -156,7 +156,7 @@ $\exists$ Two possible values of z s.t. that they differ only in $z_i$ but do no
 
 This follows from every operand appearing exactly once as in the $2^n$ possible values for z, there must exists two strings with n - 1 bits with values such that the value of the formula depends entirely on $z_i$ (as the n - 1 bits can take all possible values and since the formula cannnot contain any constants, the formula with values substituted in for the n - 1 bits cannot be constant and in particular can be reduced to either $z_i$ or $\lnot z_i$)
 
-Hence any protocol must partition the elements in the characteristic corresponding to these values. 
+Hence any protocol must induce a partition in the characteristic matrix splitting elements corresponding to these values.
 
 But since this is true $\forall i$ there exist n such distinct\footnote{Note that the partitions must necessarily be distinct as they are not this implies that the 2 strings corresponding to bit i differ in bit j as well - contradiction} partitioning cuts. 
 
@@ -215,18 +215,28 @@ Thus  $N(JIP_n) = \Omega(n)$
 Alice and Bob’s inputs are integers a and b, respectively, where $a, b \in [1, 2^n]$. Prove that $\Theta(n/ log n)$ bits are necessary and sufficient to verify nondeterministically that a and b are relatively prime.
 
 \analysis
-... 
+The protocol providing the upper bound uses the prime number theorem, which in this particular instance, translates to the existence of $n/log(n)$ prime numbers that are possible factors of x and y the inputs of Alice and Bob respectively. The lower bound can be shown by a reduction from the Disjointness problem. 
 
 \definitions
 Let $RP_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
 
 \claim
-$N(RP_n) = \Omega(n/log(n))$ 
+$N(RP_n) = \Theta(n/log(n))$ 
 
 \proof 
-Use prime number theorem
+The protocol that achieves the desired upper bound is the determinstic protocol where Alice send over a binary string of length $n/logn$ (where the $i^{th} \text{bit} = 1 \iff$ the $i^{th}$ smallest prime number in the range is a factor of x). Bob then replies with a single bit i.e. the output which is equal to 0 if one of the factors of x is also a factor of y and equal to 1 otherwise. 
 
-Not really sure how to progress from there, going to write program to see matrices, but need to come up with protocol in order to prove upper bound
+Thus $N(RP_n) = O(n/log(n))$
+
+The lower bound can be shown by reduction from the disjointness function on $n/logn$ bits. 
+
+In particular, $DISJ_{(n/logn)}: {\{0, 1\}}^{(n/logn)} \times {\{0, 1\}}^{(n/logn)} \to \{0, 1\}$ where $DISJ_{(n/logn)} = 1 \iff$ the two strings do not have a 1 in the same position, otherwise $DISJ_{(n/logn)} = 0$
+
+$DISJ_{(n/logn)}$ can be reduced to $RP_n$ (as evidenced by the above protocl) and hence if there exists a non-deterministic protocol with cost less than $n/log(n)$ bits for $RP_n$ then there must exist a protocol with cost less than $n/log(n)$ bits for $DISJ_{(n/logn)}$. But this is a contradiction as we have proven in class that $N(DISJ_{(n/logn)}) = n/logn$.
+
+Thus $N(RP_n) = \Omega(n/log(n))$
+
+Hence, in conclusion $N(RP_n) = \Theta(n/log(n))$
 
 \newpage
 
@@ -268,10 +278,7 @@ The trivial protocol shows that this bound is tight.
 \question{7}{Communication v/s Randomness}
 
 \problem
-Prove that any randomized protocol for EQn with probability of correctness 2/3 and communication cost c must use more than $log_2(n/c)$ bits of randomness.
-
-\analysis
-say something
+Prove that any randomized protocol for EQn with probability of correctness 2/3 and communication cost c must use more than $log(n/c)$ bits of randomness.
 
 \definitions
 Let $EQ_n: {\{0, 1\}}^{n^2} \times {\{0, 1\}}^{n^2} \to \{0, 1\}$
@@ -283,7 +290,8 @@ Let $B_P$ = number of random bits used by protocol P
 \claim
 $B_{P} \geq log(n/c)$
 
-\proof 
+\analysis
+I was not able to come up with any reasonable proof for the claim, however my approach was to attempt to show that any protocol that does better than this would imply the existence of a \emph{randomized (or so to say)} protocol with error = 0 with constant randomized cost by using the technique to minimize randomness alongside that for error minimization (as discussed in class). 
 
 \newpage
 \question{8}{Better Than Random}
@@ -291,9 +299,6 @@ $B_{P} \geq log(n/c)$
 \problem
 Prove that every $f : {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ has a randomized protocol with constant cost and error at most $1/2 - \Theta(2^{-n/2})$
 
-\analysis
-Thoughts
-
 \definitions
 Let $EQ_n: {\{0, 1\}}^{n^2} \times {\{0, 1\}}^{n^2} \to \{0, 1\}$
 
@@ -304,7 +309,9 @@ Let $B_P$ = number of random bits used by protocol P
 \claim
 $B_{P} \geq log(n/c)$
 
-\proof 
+\analysis
+I was not able to come up with any reasonable proof for this problem either, however, my approach was to attempt to show that for any communication problem with a fooling set of size $2^n$ it is possible to construct a randomized protocol of constant cost with the aformentioned error, and thus every communication problem must be amenable to such a randomized protocol. 
+
 \newpage
 \newAppendix{Appendix:}{Python Script used for Empirical Data for Rank in Various Fields}
 \begin{lstlisting}
