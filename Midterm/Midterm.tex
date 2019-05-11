@@ -61,19 +61,29 @@ vertices. How much communication do they need to find out deterministically if
 their graphs are isomorphic?
 
 \analysis
-The problem of Graph Isomorphism naturally seems very similar to the Equality function: a function we are very familiar with. Moreover, due to the inherent difficulty in accurately deciphering the pattern in the characteristic matrix for Graph Isomorphism, the approach taken was to reduce Equality of $n^2$ bits to the the problem of Isomorphism of Simple Undirected Graphs on n vertices. \newline
+The problem of Graph Isomorphism by virtue of being an equivalence relation very similar to that of equality. In particular, it is easy to construct a fooling set of size equal to the number of equivalence classes. Hence it remains to show that there exist  \newline
 
 \definitions
-Let $\mathbf{G_n}$ = the set of simple undirected graphs on n vertics \newline
+Let $\mathbf{G_n}$ = the set of unique (up to isomorphisms) simple undirected graphs on n vertics \newline
 Let $IS_n: \mathbf{G_n} \times \mathbf{G_n} \to \{0, 1\}$ be the graph isomorphism function i.e. 1 if the Graph x is an isomorphism of Graph y and 0 otherwise
 \newline
 
 \claim
-$ D(IS_n) \geq n^2 $
+$ D(IS_n) \geq \frac{n^2}{2} - \Omega(n(logn))) $
 
 \proof 
-Reduction from equality of $n^2$ bit strings to isomorphism of simple undirected graphs on n vertices. (Note in the reduction can only use local work i.e. local work is free as Alice and Bob are computationally unbounded entities) \newline
-Show that the number of unique simple undirected graphs under isomorphism on n vertices are $\theta2^{(n^2)}$ and therefore each can be represented using $\theta(n^2)$ bits. Therefore the $n^2$ bits of equality can be interpreted as graphs $\in \mathbf{G_n}$ and isomorphism $\leftrightarrow$ equality.
+Number of unique simple undirected graphs (allowing for double counting of graphs that are isomorphic to each other) on n vertices = $2^{n \choose 2}$
+
+But every graph is isomorphic to at most $n!$ other graphs
+
+Thus $\vert\mathbf{G_n}\vert \geq \frac{1}{n!} \cdot 2^{{n \choose 2}}$
+
+Since the function is an equivalence relation $f_s(IS_n) = \vert\mathbf{G_n}\vert \geq \frac{1}{n!} \cdot 2^{{n \choose 2}}$
+
+Thus $D(IS_n) \geq log( \frac{1}{n!} \cdot 2^{{n \choose 2}}) = {n \choose 2} - log(n!) = \frac{n^2}{2} - \Theta({nlog(n)})$
+
+This lower bound is tight as there is a protocol with this cost. In particular, if Alice and Bob (being computationally unbounded entities) simply match the graph they receive to a graph $\in \mathbf{G_n}$ then running equality on the $(\frac{n^2}{2} - \Theta({nlog(n)}))$ bit representation of the graphs will be sufficient for computing $IS_n$
+
 \newpage
 
 \question{2}{Integer Multiplication} 
@@ -82,30 +92,43 @@ How much deterministic communication does it take to compute the n
 least significant bit of the product of two natural numbers, of which Alice has one and Bob the other?
 
 \analysis
-Product of n bits strings (do not need to consider entire number)
+The first simplification that can be done on this problem is reducing the problem from multiplication of any two natural numbers to the mutliplication of the integers represented by 2 n-bit strings (that are in particular the least significant n-bits of the original natural number's representation) as any bit more significant cannot affect the output of this function. 
 
 \definitions
 Let $Product_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ be the the function on n bits strings indicating the nth least significant bit of the product of the integers represented by the strings
 
 \claim
-logn bound using powers of 2 being distinct s
+$D(Product_n) \geq log(n)$ 
+
+\proof
+This proof uses the rank bound technique and shows that the characteristic matrix of the function $M_{Product_n}$ has rank $\geq n$ to arrive at the lower bound for the commmunication complexity of the function. 
+
+Assuming rows and columns are arranged in lexicographic order it easy to see that 
+the rows corresponding to powers of $2 \in [0, 2^n]$ are linearly independent. 
+
+An inductive argument proves this by showing that for any $k < 2^n$ the row corresponding to kth power of 2 must be linearly independent of the previous k - 1 rows corresponding to powers of 2 as the first $2^n / 2^{k-1}$ numbers have 0s in their k - 1 most significant bits thus must have 0s the columns corresponding to them in all the previous k - 1 rows but necessarily half of them must have a 1 in the kth most significant bit and thus will have 1s in the row correspoding to $2^k$,thus this row is linearly independent of the previous k - 1 rows (corresponding to powers of 2). A similar argument works for the base case in showing that rows corresponding to $2^0$ and $2^1$ are linearly independent. 
+
+Thus $rank(M_{Product_n}) \geq log(2^n) = n$ 
+
+Therefore by the rank bound $D(f) \geq log(rank(M_{Product_n})) \geq log(n)$\newline 
+
 
 \claim
-$D(Product_n) \geq n + 1$ (maybe plus 1 look at the inequality)
+$D(Product_n) = n + 1$ 
 
-\emph{The kernel has always dimension $< 2^{n - 1}$ vectors therefore by rank nullity}
+\proof
+Proving first $dim(kernel(M_{Product_n})) < 2^{n - 1}$
 
-proof for the above statement:
+Conjecture: Vectors of the following form completely span the null space:
+1 in the $a^{th}$ and $b^{th}$  positions and -1 in the $c^{th}$ and $d^{th}$ positions where $a$ and $b$ are such that $a + b = 2^n$, $c = 2^{n-1} - 1$ and $d = 2^{n-1} + 1$ positions 
 
-Argue that vectors of the desired form span the nullspace 
+I was unable to prove this conjecture (perhaps because this is a consequence of a deeper phenomenon), however the intuition behind this relies on the following argument. Moreover, there was overwhelming evidence from empirical data that conformed to this hypothesis (the appendix contains the python script used in order to obtain this empirical data):
 
-Show that there can exist only $< 2 ^ {n - 1}$ such linearly independent vectors and hence nullity $< 2 ^ {n - 1}$
+The vectors in the nullspace are a subset of the linear combinations of the vectors that represent in essence multiplication by 0. This is to say that the vectors of the form mentioned above are vectors where the 4 indices with non-zero values along with values sum up to 0 i.e. $a + b - c - d = 0$. The choice for 4 values of this form is not arbitrary as it can be argued easily that any other vector of such a form in the nullspace can be expressed as a linear combination of these vectors, an the choice of 4 in particular allows for easy analysis of the possible vectors of this type. Since $a \in [1, 2^{n - 1} - 2]$ the number of vectors of this form are strictly less than $2^{n - 1}$ and thus $dim(kernel(M_{Product_n})) < 2^{n - 1}$
 
-Use rank nullity and hence rank $> 2 ^ {n - 1}$
+By the rank nullity theorem, this implies $rank(M_{Product_n}) > 2 ^ {n - 1}$
 
-Thus conclude. 
-
-\emph{rank $>  2^{n - 1} \implies$ log rank $>$ n - 1 $\implies$ ceiling log rank $\geq$ n and hence D(f) $\geq$ 1}
+Thus by the rank bound, $D(Product_n) \geq \lceil log(rank(M_{Product_n})) \rceil + 1 \geq n + 1$
 
 \newpage
 
@@ -113,27 +136,37 @@ Thus conclude.
 
 \problem
 A Boolean formula in variables z1, . . . , zn is a fully
-parenthesized expression with operands $z1, \lnot z1, . . . , zn, \lnot zn$ and operators $\land$ and $\lor$. Let $\phi (z1, . . . , zn)$ be a Boolean formula in which every variable occurs exactly once. Prove that computing $\phi (x \oplus y$ deterministically on input $x, y \in {0, 1}^n$
+parenthesized expression with operands $z1, \lnot z1, . . . , zn, \lnot zn$ and operators $\land$ and $\lor$. Let $\phi (z1, . . . , zn)$ be a Boolean formula in which every variable occurs exactly once. Prove that computing $\phi (x \oplus y)$ deterministically on input $x, y \in {0, 1}^n$
 requires
-$\phi(n)$ bits of communication.
+$\Omega(n)$ bits of communication.
 
 \analysis
-Describe the boolean function and the requirements it imposes
+The requirement that every operand appear exactly once ensures dependence on every operand by eliminating all redundancy from the function and as such this observation can be used to justify a tight lower bound. 
 
 \definitions
-Let $Boolean_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
+Let $Boolean_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ be any boolean formula of the form described in the problem statement. 
+
+Let $z = x \oplus y$ and $z_i$ be the $i^{th}$ bit of z
 
 \claim
 $D(Boolean_n) = n + 1$ 
 
 \proof 
-For each bit there are two strings that differ in value of just that bit and have different outputs thus must be separated by any protocol
+$\exists$ Two possible values of z s.t. that they differ only in $z_i$ but do not have the same output $\forall i$
 
-Thus there exist n such distinct partitioning cuts (note that the partitions must necessarily be distinct as they are not this implies that the 2 strings corresponding to bit i differ in bit j as well - contradiction)
+This follows from every operand appearing exactly once as in the $2^n$ possible values for z, there must exists two strings with n - 1 bits with values such that the value of the formula depends entirely on $z_i$ (as the n - 1 bits can take all possible values and since the formula cannnot contain any constants, the formula with values substituted in for the n - 1 bits cannot be constant and in particular can be reduced to either $z_i$ or $\lnot z_i$)
 
-Any valid protocol must induce these n partitions (as for any given bit, it is impossible for Alice or Bob to know precisely which side of the partition the final answer lies in with just their input for all possible input strings)
+Hence any protocol must partition the elements in the characteristic corresponding to these values. 
 
-To induce these n distinct partitions any protocol must send atleast n bits and hence the deterministic commmunication complexity of any such boolean formula is exactly n + 1 bits. 
+But since this is true $\forall i$ there exist n such distinct\footnote{Note that the partitions must necessarily be distinct as they are not this implies that the 2 strings corresponding to bit i differ in bit j as well - contradiction} partitioning cuts. 
+
+Any valid protocol must induce these n partitions (as for any given bit, there exists x and y such that it is impossible for Alice or Bob to know precisely which side of the corresponding partition the final answer lies in solely on the basis of $x_i$ or $y_i$ respectively\footnote{The characteristic matrix for the xor function with full rank evidences this})
+
+To induce these n distinct partitions any protocol must send at least n bits.
+
+Moreover, since the boolean formula cannot contain constants and due to the aformentioned observations, every boolean formula of this form must also necessarily be non-constant. 
+
+Hence $D(Boolean_n) = n + 1$ 
 
 \newpage
 
@@ -143,20 +176,36 @@ To induce these n distinct partitions any protocol must send atleast n bits and 
 Define $f: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ by $f(x, y) = 1 \iff \sum{x_i \cdot y_i} = 0 \text{ mod (18181)}.$ What is the nondeterministic communication complexity of f?
 
 \analysis
-compare to known problem 
+This problem seems identical to the analysis for modulo 2 Inner Product function discussed in class and since the 18181 is a prime number, it allows for a similar analysis of rectangle size. 
 
 \definitions
-Let $JIP_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$
+Let $JIP_n: {\{0, 1\}}^n \times {\{0, 1\}}^n \to \{0, 1\}$ be the function $f$ described in the problem statement
 
 \claim
 $N(JIP_n) = \Omega(n)$ 
 
 \proof 
-Maximal rectangles -> cross of the boolean vectors in subspace A of dimension n - k and subspace B of dimension k 
+Note that in any 1-monochromatic rectangle $R = A \times B$, $A$ and $B$ can be interpreted as subspaces\footnote{in the finite field with 18181 elements} in $\mathbb{F}_{18181}$ and therefore can be enlarged to $R' = span(A) \times span(B)$
 
-Number of boolean vectors in A = $2^{n - k}$ and number of boolean vectors in B = $2^{k}$ therefore total number of elements in any rectangle $\leq 2^{n - k} \cdot 2^{k} = 2^n$ 
+Let $A' = span(A)$ and $B' = span(B)$
 
-Identical proof here on forth
+Let $dim(A') = k$ and since $B'$ is orthogonal to $A'$ in $\mathbb{F}_{18181}$, it can have dimension at most that of the orthogonal complement of $A'$ and thus $dim(B') \leq n - k$
+
+Therefore $\lvert A' \rvert =$ number of boolean vectors in $A' = 2^k$
+
+Similarly, $\lvert B' \rvert =$ number of boolean vectors in $B' \leq 2^{n-k}$
+
+Therefore $\lvert R' \rvert = \lvert A' \rvert \cdot \lvert B' \rvert \leq 2^n$
+
+Thus choosing $\mu$ = the uniform distribution over $f^{-1}(1)$ 
+
+$\mu(R') \leq \frac{2^n}{2^n + 2^{n - 1} \cdot (2^n - 1)} < \frac{1}{2^{n-1}} \forall R'$ (\text{1-monochromatic rectangles})
+
+Thus $RS(JIP_n) = \frac{1}{2^{n-1}}$
+
+Hence by the rectangle size bound $N(JIP_n) = \lceil log(2^{n-1}) \rceil \geq n$
+
+Thus  $N(JIP_n) = \Omega(n)$
 
 \newpage
 
@@ -184,33 +233,36 @@ Not really sure how to progress from there, going to write program to see matric
 \question{6}{Orthogonal Subspaces}
 
 \problem
-On input linear subspaces $A, B \subseteq F^n_2$, prove that $\Theta(n^2)$ bits of nondeterministic communication are necessary and sufficient to check if A and B are orthogonal.
+On input linear subspaces $A, B \subseteq \mathbb{F}_2^n$, prove that $\Theta(n^2)$ bits of nondeterministic communication are necessary and sufficient to check if A and B are orthogonal.
 
 \analysis
-$N^2$ bits for the representation of the Subspace
+Using the understanding that the orthogonal complement of a subspace is the subspace that contains all orthogonal vectors there is an intuitive way to construct a large fooling set. 
 
 \definitions
 Let $OS_n: {\{0, 1\}}^{n^2} \times {\{0, 1\}}^{n^2} \to \{0, 1\}$
+
+Let $A$ be any subspace in the set of valid inputs
 
 \claim
 $N(OS_n) = \Omega(n^2)$ 
 
 \proof 
-Large fooling set
+A valid fooling set is the set of tuples of the form $(A, A^{\perp}) \forall A$
 
-The fooling set contains all vector spaces and their orthogonal complement. 
+By definition of orthogonal complement, it is the subspace containing \textbf{all} vectors orthogonal to a susbspace, hence one of the crosspoints for any two points must neccessarily be 0 as atleast one of the crosspoints cannot correspond to a subspace of the orthogonal complement. 
 
-By definition of orthogonal complement, it is the subspace containing all vectors orthogonal to a susbspace and hence any other all crosspoints will equal 0 (thus a valid fooling set)
+Thus the $f_s(OS_n) = \lvert$ Subspaces of $\mathbb{F}_2^n \rvert$
 
-Number of subspaces of ${\mathbb{F}_2}^n = 1 + {2^n \choose n - 1} + ... + {2^n \choose 1} + 1$
+Number of subspaces of $\mathbb{F}_2^n = 1 + {2^n \choose n - 1} + ... + {2^n \choose 1} + 1$
 
-Largest term is by far second term as terms reduce in magnitude now as they $n << 2^{n-1}$
+The largest term in the above expression is by far the second term as the terms representing combinations reduce in magnitude are decreasing as $n << 2^{n-1}$
 
-Therefore fooling set = $\Omega{2^n \choose n - 1} = \Omega({2^{n^2}})$
+$\therefore f_s(OS_n) = \Omega{2^n \choose n - 1} = \Omega({2^{n^2}})$
 
-Therefore $N(OS_n) = \Omega(log(2^{n^2})) = \Omega(n^2)$
+Thus $N(OS_n) = \Omega(log(2^{n^2})) = \Omega(n^2)$
 
-And by the trivial protocol of sending the entire input it is easy to see that this bound is tight
+The trivial protocol shows that this bound is tight. 
+
 \newpage
 
 \question{7}{Communication v/s Randomness}
